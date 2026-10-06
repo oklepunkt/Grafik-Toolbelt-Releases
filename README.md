@@ -17,8 +17,8 @@ Grafik Toolbelt brings installation, updates and standalone creative tools into 
 
 1. Open the **[latest release](https://github.com/oklepunkt/Grafik-Toolbelt-Releases/releases/latest)** and download the `.dmg` file.
 2. Open the DMG and drag **Grafik Toolbelt** into **Applications**.
-3. Open Toolbelt. Use **refresh** to check for updates, or **open** to launch MDA Creator.
-4. To try KeyTween, enable **settings → enable dev builds**, select installer storage, and quit both Adobe apps before installing their panels.
+3. Open Toolbelt. Use **Grafik Toolbelt → Check for Updates**, or **open** to launch MDA Creator.
+4. To try KeyTween, select installer storage when prompted and quit both Adobe apps before installing their panels.
 
 **Requirements:** macOS 13+, Apple Silicon or Intel. The current KeyTween preview targets After Effects 26.x and Animate 24.x with CEP 12.
 
@@ -26,7 +26,9 @@ Grafik Toolbelt brings installation, updates and standalone creative tools into 
 
 Toolbelt reads releases from this public repository—no GitHub account or access token is needed. Plugin downloads are checked before installation; recovery copies remain in your selected Working Folder. Toolbelt app updates download and open a verified DMG; quit the app and replace it in Applications to finish.
 
-Development plugin releases are optional and disabled by default. Installed versions are never automatically downgraded. Refreshing does not replace running Adobe panels.
+Development plugin releases are included by default. Installed versions are never automatically downgraded. Update checks run automatically every 30 minutes while Toolbelt is open and never replace running Adobe panels. Releases contain only the DMG and GitHub’s automatic source archives. Plugin updates are read from the verified DMG.
+
+The interface starts at 120% size. Use the View menu to change its size; your choice is remembered. Upgrading from the old 0.2.1-numbered app to 0.2 requires a manual DMG download once.
 
 ### Preview status
 
