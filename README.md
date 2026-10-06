@@ -1,41 +1,36 @@
-<p align="center"><img src="docs/app-icon.png" width="112" alt="Grafik Toolbelt icon"></p>
+<p align="center"><img src="docs/app-icon.png" width="112" alt="Grafik-Toolbelt-Icon"></p>
 <h1 align="center">Grafik Toolbelt</h1>
-<p align="center">A home for custom creative apps and Adobe plugins.</p>
-<p align="center"><a href="https://github.com/oklepunkt/Grafik-Toolbelt-Releases/releases/latest"><strong>Download the latest version for macOS</strong></a></p>
+<p align="center">Deine kreativen Apps und Adobe-Plugins an einem Ort.</p>
+<p align="center"><a href="https://github.com/oklepunkt/Grafik-Toolbelt-Releases/releases/latest"><strong>Neueste Version für macOS herunterladen</strong></a></p>
 
-![Grafik Toolbelt catalogue](docs/toolbelt.png)
+![Grafik Toolbelt](docs/toolbelt.png)
 
-Grafik Toolbelt brings installation, updates and standalone creative tools into one compact macOS app. Install your plugins, check for new versions, and open the tools you need from the same place.
+Grafik Toolbelt installiert und aktualisiert unsere eigenen kreativen Tools. Plugins verwaltest du im kompakten Hauptfenster. Eigenständige Apps wie **MDA Creator** öffnen sich in einem eigenen Fenster.
 
-| Tool | What it does | Availability |
+| Tool | Funktion | Status |
 | --- | --- | --- |
-| **KeyTween** | Transfers supported After Effects animation and artwork into editable Adobe Animate content. | Development preview for After Effects and Animate |
-| **MDA Creator** | A dedicated workspace for mobile display-ad projects. Opens in its own window. | Interface preview; project automation is in development |
-| **MasterClip** | Planned tools for InDesign and Illustrator. | In development |
+| **KeyTween** | Überträgt unterstützte Animationen und Grafiken aus After Effects in bearbeitbare Adobe-Animate-Inhalte. | Dev-Build für After Effects und Animate |
+| **MDA Creator** | Arbeitsbereich für Mobile-Display-Ads-Projekte. | Oberfläche als Vorschau; Projektfunktionen in Entwicklung |
+| **MasterClip** | Geplante Tools für InDesign und Illustrator. | In Entwicklung |
 
-### Get started
+### Installation
 
-1. Open the **[latest release](https://github.com/oklepunkt/Grafik-Toolbelt-Releases/releases/latest)** and download the `.dmg` file.
-2. Open the DMG and drag **Grafik Toolbelt** into **Applications**.
-3. Open Toolbelt. Use **Grafik Toolbelt → Check for Updates**, or **open** to launch MDA Creator.
-4. To try KeyTween, select installer storage when prompted and quit both Adobe apps before installing their panels.
+Lade die DMG herunter, öffne sie und ziehe Grafik Toolbelt in den Ordner Programme (Applications). Falls macOS den Preview-Build beim ersten Start blockiert, wähle unter Systemeinstellungen → Datenschutz und Sicherheit «Dennoch öffnen» («Open Anyway») und bestätige mit «Öffnen».
 
-**Requirements:** macOS 13+, Apple Silicon or Intel. The current KeyTween preview targets After Effects 26.x and Animate 24.x with CEP 12.
+**Voraussetzungen:** macOS 13 oder neuer, Apple Silicon oder Intel. KeyTween benötigt aktuell After Effects 26.x und Animate 24.x mit CEP 12. Schliesse beide Adobe-Apps vor der Plugin-Installation.
 
 ### Updates
 
-Toolbelt reads releases from this public repository—no GitHub account or access token is needed. Plugin downloads are checked before installation; recovery copies remain in your selected Working Folder. Toolbelt app updates download and open a verified DMG; quit the app and replace it in Applications to finish.
+Toolbelt prüft GitHub beim Start und alle 30 Minuten auf Updates. Eine manuelle Prüfung findest du unter **Grafik Toolbelt → Check for Updates**. Dev-Builds sind standardmässig enthalten.
 
-Development plugin releases are included by default. Installed versions are never automatically downgraded. Update checks run automatically every 30 minutes while Toolbelt is open and never replace running Adobe panels. Releases contain only the DMG and GitHub’s automatic source archives. Plugin updates are read from the verified DMG.
+Der gemeinsame Update-Button neben **KeyTween** aktualisiert alle installierten Panels. Eine laufende Installation kannst du abbrechen; die vorherige Installation wird wiederhergestellt. Sicherungskopien bleiben im gewählten Arbeitsordner. Für Toolbelt-Updates öffnest du die heruntergeladene DMG, beendest die App und ersetzt sie im Ordner Programme.
 
-KeyTween has one shared update button beside its heading. Installations start directly and offer Cancel while in progress; cancellation restores the previous installation. Uninstall uses an in-app confirmation.
+Die Oberfläche startet mit 120 % Grösse. Über das View-Menü kannst du sie anpassen; deine Auswahl wird gespeichert.
 
-The interface starts at 120% size. Use the View menu to change its size; your choice is remembered. Upgrading from the old 0.2.1-numbered app to 0.2 requires a manual DMG download once.
+### Preview-Status
 
-### Preview status
+Die aktuelle Version ist ein **Preview-Build ohne Apple-Notarisierung**. MDA Creator und MasterClip enthalten Funktionen in Entwicklung. Die neuesten Änderungen benötigen weiterhin Tests in der nativen App und den Adobe-Programmen.
 
-The current release is **ad-hoc signed and not Apple-notarized**, so macOS may block first launch. Native app and Adobe-host testing are still pending for the latest build. MDA Creator's project controls and MasterClip are previews.
-
-This repository contains **downloads, release notes and public documentation only**. Source development is maintained separately. Release versions are immutable: corrections receive a new version.
+Dieses öffentliche Repository enthält Downloads, Release Notes und Dokumentation. Für den Download ist kein GitHub-Konto nötig. Die Entwicklung liegt in einem separaten privaten Repository. Releases enthalten nur die DMG und die von GitHub erzeugten Quellcodearchive dieses Dokumentations-Repositorys.
 
 — Cedric Okle · Emmi Grafik
