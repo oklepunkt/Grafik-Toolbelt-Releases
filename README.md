@@ -28,6 +28,8 @@ Toolbelt reads releases from this public repository—no GitHub account or acces
 
 Development plugin releases are included by default. Installed versions are never automatically downgraded. Update checks run automatically every 30 minutes while Toolbelt is open and never replace running Adobe panels. Releases contain only the DMG and GitHub’s automatic source archives. Plugin updates are read from the verified DMG.
 
+KeyTween has one shared update button beside its heading. Installations start directly and offer Cancel while in progress; cancellation restores the previous installation. Uninstall uses an in-app confirmation.
+
 The interface starts at 120% size. Use the View menu to change its size; your choice is remembered. Upgrading from the old 0.2.1-numbered app to 0.2 requires a manual DMG download once.
 
 ### Preview status
