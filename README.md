@@ -17,7 +17,9 @@ Grafik Toolbelt installiert und aktualisiert unsere eigenen kreativen Tools. Plu
 
 Lade die DMG herunter, öffne sie und ziehe Grafik Toolbelt in den Ordner Programme (Applications). Falls macOS den Preview-Build beim ersten Start blockiert, wähle unter Systemeinstellungen → Datenschutz und Sicherheit «Dennoch öffnen» («Open Anyway») und bestätige mit «Öffnen».
 
-**Voraussetzungen:** macOS 13 oder neuer, Apple Silicon oder Intel. KeyTween benötigt aktuell After Effects 26.x und Animate 24.x mit CEP 12. Schliesse beide Adobe-Apps vor der Plugin-Installation.
+**Voraussetzungen:** macOS 13 oder neuer, Apple Silicon oder Intel. KeyTween benötigt aktuell After Effects 26.x und Animate 24.x mit CEP 12. Die AE-Composition muss für den Transfer auf 30 fps eingestellt sein. Schliesse beide Adobe-Apps vor der Plugin-Installation.
+
+Statische PSD-Compositions werden als einzelnes sRGB-PNG übertragen. Intern animierte Compositions bleiben Symbole. Layer ohne Keyframes verwenden normale gehaltene Frames über ihre gesamte Dauer.
 
 ### Updates
 
