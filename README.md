@@ -25,6 +25,8 @@ Statische PSD-Compositions werden als einzelnes sRGB-PNG übertragen. Intern ani
 
 Toolbelt prüft GitHub beim Start und alle 30 Minuten auf Updates. Eine manuelle Prüfung findest du unter **Grafik Toolbelt → Check for Updates**. Dev-Builds sind standardmässig enthalten.
 
+Ab Toolbelt **0.6** werden neue KeyTween-Versionen direkt aus GitHub installiert. Dafür muss die Toolbelt-App nicht jedes Mal neu installiert werden. Ältere Toolbelt-Versionen benötigen einmalig das Update auf 0.6.
+
 Der gemeinsame Update-Button neben **KeyTween** aktualisiert alle installierten Panels. Eine laufende Installation kannst du abbrechen; die vorherige Installation wird wiederhergestellt. Sicherungskopien bleiben im gewählten Arbeitsordner. Für Toolbelt-Updates öffnest du die heruntergeladene DMG, beendest die App und ersetzt sie im Ordner Programme.
 
 Die Oberfläche startet mit 120 % Grösse. Über das View-Menü kannst du sie anpassen; deine Auswahl wird gespeichert.
@@ -33,6 +35,6 @@ Die Oberfläche startet mit 120 % Grösse. Über das View-Menü kannst du sie an
 
 Die aktuelle Version ist ein **Preview-Build ohne Apple-Notarisierung**. MDA Creator und MasterClip enthalten Funktionen in Entwicklung. Die neuesten Änderungen benötigen weiterhin Tests in der nativen App und den Adobe-Programmen.
 
-Dieses öffentliche Repository enthält Downloads, Release Notes und Dokumentation. Für den Download ist kein GitHub-Konto nötig. Die Entwicklung liegt in einem separaten privaten Repository. Releases enthalten nur die DMG und die von GitHub erzeugten Quellcodearchive dieses Dokumentations-Repositorys.
+Dieses öffentliche Repository enthält Downloads, Release Notes und Dokumentation. Für den Download ist kein GitHub-Konto nötig. Die Entwicklung liegt in einem separaten privaten Repository. Toolbelt-Releases enthalten die DMG, separate Plugin-Releases das Plugin-ZIP. GitHub ergänzt Quellcodearchive dieses Dokumentations-Repositorys.
 
 — Cedric Okle · Emmi Grafik
