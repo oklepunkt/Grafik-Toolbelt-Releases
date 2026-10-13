@@ -15,21 +15,23 @@ Grafik Toolbelt installiert und aktualisiert unsere eigenen kreativen Tools. Plu
 
 ### Installation
 
-Lade die DMG herunter, öffne sie und ziehe Grafik Toolbelt in den Ordner Programme (Applications). Falls macOS den Preview-Build beim ersten Start blockiert, wähle unter Systemeinstellungen → Datenschutz und Sicherheit «Dennoch öffnen» («Open Anyway») und bestätige mit «Öffnen».
+Hey Teammitglieder, hier auf dem GitHub findet ihr die neuste Version vom "Grafik Toolbelt" dass ist der installer und über den ihr alles installiert das ich erstelle.
 
-**Voraussetzungen:** macOS 13 oder neuer, Apple Silicon oder Intel. KeyTween benötigt aktuell After Effects 26.x und Animate 24.x mit CEP 12. Die AE-Composition muss für den Transfer auf 30 fps eingestellt sein. Schliesse beide Adobe-Apps vor der Plugin-Installation.
+1. Gehe zu Releases (in der Sidebar) und lade dir von der neusten Version das "Grafik-Toolbelt-XX-macOS-universal.dmg" herunter. 
 
-Statische PSD-Compositions werden als einzelnes sRGB-PNG übertragen. Intern animierte Compositions bleiben Symbole. Layer ohne Keyframes verwenden normale gehaltene Frames über ihre gesamte Dauer.
+2. öffne sie im Downloads Ordner und ziehe Grafik Toolbelt in den Ordner Programme (Applications). Nun öffne die App, falls du sie zum ersten mal herrunterlädst wird sie von macOS abgelehnt (da ich kein Apple Developer Account habe und es nicht signiren kann). Gehe unter Systemeinstellungen -> Datenschutz & Sicherheit und scrolle runter bis "Sicherheit" dort findest du die Option die App trotzdem zu öffnen, nun müsst ihr es noch mit dem Passwort bestätigen. Danach könnt ihr erneut die App aufmachen.
 
-### Updates
+3. Nun könnt ihr im Grafik Toolbelt die Keytween Plugins automatisch installieren lassen, dabei sollten beide Programme geschlossen sein. Nun findet ihr unter Fenster  -> Erweiterungen das Keytween Panel in beiden Programmen.
 
-Toolbelt prüft GitHub beim Start und alle 30 Minuten auf Updates. Eine manuelle Prüfung findest du unter **Grafik Toolbelt → Check for Updates**. Dev-Builds sind standardmässig enthalten.
+### Nutzen
 
-Ab Toolbelt **0.6** werden neue KeyTween-Versionen direkt aus GitHub installiert. Dafür muss die Toolbelt-App nicht jedes Mal neu installiert werden. Ältere Toolbelt-Versionen benötigen einmalig das Update auf 0.6.
+Wenn ihr nun eure Composition fertig habt und es ins Animate ziehen möchtet geht das über die Buttons die oben vom Keytween Fenster leben.
 
-Der gemeinsame Update-Button neben **KeyTween** aktualisiert alle installierten Panels. Eine laufende Installation kannst du abbrechen; die vorherige Installation wird wiederhergestellt. Sicherungskopien bleiben im gewählten Arbeitsordner. Für Toolbelt-Updates öffnest du die heruntergeladene DMG, beendest die App und ersetzt sie im Ordner Programme.
+Push Selection: Die Angewählten Layer werden in Animate importiert
+Push Composition: Die Auswählte Composition wird in Animate importiert, achtet darauf das ihr keine precomps ausgewählt habt. 
 
-Die Oberfläche startet mit 120 % Grösse. Über das View-Menü kannst du sie anpassen; deine Auswahl wird gespeichert.
+Wenn ihr nun mehrere Animate Dateien erstellt müsst ihr in Animate nur einen neuen HTML5 Canvas erstellen, die Grösse wird automatisch angepasst.
+
 
 ### Preview-Status
 
