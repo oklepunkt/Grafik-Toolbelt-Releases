@@ -1,0 +1,85 @@
+name: KeyTween dev.20 veröffentlichen
+
+on:
+  push:
+    branches: [main]
+    paths: ['.github/releases/keytween-dev20.md']
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: keytween-dev20-release
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    env:
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - name: Geprüfte ZIP als Release veröffentlichen
+        shell: python
+        run: |
+          import base64, hashlib, io, json, os, re, subprocess, zipfile
+          from pathlib import Path
+
+          repo = 'oklepunkt/Grafik-Toolbelt-Releases'
+          if os.environ['GITHUB_REPOSITORY'] != repo:
+              raise RuntimeError('Unexpected repository')
+          tag = 'keytween-v0.1.0-dev.20'
+          name = 'KeyTween-0.1.0-dev.20.zip'
+          digest = '1782cfa0d27a6b6a93df73edaf6e4bf7b459ea936caedd2e83dbfc1f6deaedb0'
+          blob_sha = '983504bbf7b12ba94428a1c5bef6fb0182f661ef'
+
+          def gh(*args):
+              return subprocess.check_output(['gh', *args], text=True)
+
+          def api(path):
+              return json.loads(gh('api', 'repos/' + repo + '/' + path))
+
+          # Read exact committed bytes; never execute anything in the plugin ZIP.
+          blob = api('git/blobs/' + blob_sha)
+          data = base64.b64decode(blob['content'])
+          if len(data) != 502096 or hashlib.sha256(data).hexdigest() != digest:
+              raise RuntimeError('ZIP bytes differ from the reviewed package')
+          with zipfile.ZipFile(io.BytesIO(data)) as archive:
+              if archive.testzip() is not None:
+                  raise RuntimeError('ZIP CRC mismatch')
+              manifest = json.loads(archive.read('KeyTween/build.json'))
+              if manifest['build'] != '0.1.0-dev.20':
+                  raise RuntimeError('Wrong plugin version')
+          Path(name).write_bytes(data)
+          notes_entry = api('contents/.github/releases/keytween-dev20.md?ref=' + os.environ['GITHUB_SHA'])
+          notes = base64.b64decode(notes_entry['content']).decode('utf-8')
+          if not re.search(r'<!-- keytween-source revision=[0-9a-f]{40} -->', notes):
+              raise RuntimeError('Reviewed private source revision is missing')
+          Path('notes.md').write_text(notes)
+
+          # Distinguish a missing tag from any other API failure. Existing releases
+          # (including drafts) are immutable here and must never be overwritten.
+          probe = subprocess.run(['gh', 'api', 'repos/' + repo + '/releases/tags/' + tag], text=True, capture_output=True)
+          if probe.returncode == 0:
+              raise RuntimeError('Release already exists; refusing to overwrite it')
+          if '(HTTP 404)' not in probe.stderr:
+              raise RuntimeError('Could not establish that the release is absent: ' + probe.stderr)
+
+          gh('release', 'create', tag, '--repo', repo, '--target', os.environ['GITHUB_SHA'],
+             '--draft', '--prerelease', '--latest=false', '--title', 'KeyTween 0.1.0-dev.20',
+             '--notes-file', 'notes.md', name)
+          release = api('releases/tags/' + tag)
+          assets = release['assets']
+          if len(assets) != 1 or assets[0]['name'] != name or assets[0]['size'] != len(data) or assets[0].get('digest') != 'sha256:' + digest:
+              raise RuntimeError('Uploaded asset mismatch; release left as draft')
+          gh('release', 'download', tag, '--repo', repo, '--pattern', name, '--dir', 'verify')
+          if hashlib.sha256(Path('verify', name).read_bytes()).hexdigest() != digest:
+              raise RuntimeError('Downloaded asset mismatch; release left as draft')
+          gh('release', 'edit', tag, '--repo', repo, '--draft=false', '--latest=false')
+          release = api('releases/tags/' + tag)
+          if release['draft'] or not release['prerelease']:
+              raise RuntimeError('Unexpected published release status')
+          if api('releases/latest')['tag_name'] != 'toolbelt-v0.6':
+              raise RuntimeError('Unexpected latest Toolbelt release; inspect without replacing assets')
+          print(release['html_url'])
