@@ -3,7 +3,7 @@ name: KeyTween dev.20 veröffentlichen
 on:
   push:
     branches: [main]
-    paths: ['.github/releases/keytween-dev20.md']
+    paths: ['.github/releases/keytween-dev20.md', '.github/workflows/publish-keytween-dev20.yml']
   workflow_dispatch:
 
 permissions:
@@ -58,26 +58,43 @@ jobs:
               raise RuntimeError('Reviewed private source revision is missing')
           Path('notes.md').write_text(notes)
 
-          # Distinguish a missing tag from any other API failure. Existing releases
-          # (including drafts) are immutable here and must never be overwritten.
-          probe = subprocess.run(['gh', 'api', 'repos/' + repo + '/releases/tags/' + tag], text=True, capture_output=True)
-          if probe.returncode == 0:
-              raise RuntimeError('Release already exists; refusing to overwrite it')
-          if '(HTTP 404)' not in probe.stderr:
-              raise RuntimeError('Could not establish that the release is absent: ' + probe.stderr)
+          # Drafts may not resolve through the tag endpoint. Look them up by ID
+          # through the paginated release list. Resume only our verified draft;
+          # never replace assets or change an already published release.
+          def find_release():
+              matches = []
+              for page in range(1, 11):
+                  batch = api('releases?per_page=100&page=' + str(page))
+                  matches.extend(r for r in batch if r['tag_name'] == tag)
+                  if len(batch) < 100:
+                      break
+              else:
+                  raise RuntimeError('Release list exceeds limit')
+              if len(matches) > 1:
+                  raise RuntimeError('Ambiguous release tag')
+              return matches[0] if matches else None
 
-          gh('release', 'create', tag, '--repo', repo, '--target', os.environ['GITHUB_SHA'],
-             '--draft', '--prerelease', '--latest=false', '--title', 'KeyTween 0.1.0-dev.20',
-             '--notes-file', 'notes.md', name)
-          release = api('releases/tags/' + tag)
+          release = find_release()
+          if release is None:
+              gh('release', 'create', tag, '--repo', repo, '--target', os.environ['GITHUB_SHA'],
+                 '--draft', '--prerelease', '--latest=false', '--title', 'KeyTween 0.1.0-dev.20',
+                 '--notes-file', 'notes.md', name)
+              release = find_release()
+          elif release['draft'] and release['id'] != 411595962:
+              raise RuntimeError('Unexpected existing draft; refusing to alter it')
+          if release is None or (release.get('body') or '').strip() != notes.strip():
+              raise RuntimeError('Release notes differ from the reviewed source')
           assets = release['assets']
           if len(assets) != 1 or assets[0]['name'] != name or assets[0]['size'] != len(data) or assets[0].get('digest') != 'sha256:' + digest:
               raise RuntimeError('Uploaded asset mismatch; release left as draft')
-          gh('release', 'download', tag, '--repo', repo, '--pattern', name, '--dir', 'verify')
-          if hashlib.sha256(Path('verify', name).read_bytes()).hexdigest() != digest:
+          downloaded = subprocess.check_output(['gh', 'api', 'repos/' + repo + '/releases/assets/' + str(assets[0]['id']), '-H', 'Accept: application/octet-stream'])
+          if hashlib.sha256(downloaded).hexdigest() != digest:
               raise RuntimeError('Downloaded asset mismatch; release left as draft')
-          gh('release', 'edit', tag, '--repo', repo, '--draft=false', '--latest=false')
-          release = api('releases/tags/' + tag)
+          release_path = 'releases/' + str(release['id'])
+          if release['draft']:
+              gh('api', '--method', 'PATCH', 'repos/' + repo + '/' + release_path,
+                 '-F', 'draft=false', '-f', 'make_latest=false')
+          release = api(release_path)
           if release['draft'] or not release['prerelease']:
               raise RuntimeError('Unexpected published release status')
           if api('releases/latest')['tag_name'] != 'toolbelt-v0.6':
