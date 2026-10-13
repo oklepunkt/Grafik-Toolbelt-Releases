@@ -7,12 +7,6 @@
 
 Grafik Toolbelt installiert und aktualisiert unsere eigenen kreativen Tools. Plugins verwaltest du im kompakten Hauptfenster. Eigenständige Apps wie **MDA Creator** öffnen sich in einem eigenen Fenster.
 
-| Tool | Funktion | Status |
-| --- | --- | --- |
-| **KeyTween** | Überträgt unterstützte Animationen und Grafiken aus After Effects in bearbeitbare Adobe-Animate-Inhalte. | Dev-Build für After Effects und Animate |
-| **MDA Creator** | Arbeitsbereich für Mobile-Display-Ads-Projekte. | Oberfläche als Vorschau; Projektfunktionen in Entwicklung |
-| **MasterClip** | Geplante Tools für InDesign und Illustrator. | In Entwicklung |
-
 ### Installation
 
 Hey Teammitglieder, hier auf dem GitHub findet ihr die neuste Version vom "Grafik Toolbelt" dass ist der installer und über den ihr alles installiert das ich erstelle.
@@ -27,7 +21,8 @@ Hey Teammitglieder, hier auf dem GitHub findet ihr die neuste Version vom "Grafi
 
 Wenn ihr nun eure Composition fertig habt und es ins Animate ziehen möchtet geht das über die Buttons die oben vom Keytween Fenster leben.
 
-Push Selection: Die Angewählten Layer werden in Animate importiert
+Push Selection: Die Angewählten Layer werden in Animate importiert.
+
 Push Composition: Die Auswählte Composition wird in Animate importiert, achtet darauf das ihr keine precomps ausgewählt habt. 
 
 Wenn ihr nun mehrere Animate Dateien erstellt müsst ihr in Animate nur einen neuen HTML5 Canvas erstellen, die Grösse wird automatisch angepasst.
