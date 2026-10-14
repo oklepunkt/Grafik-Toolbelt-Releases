@@ -23,7 +23,7 @@ jobs:
       - name: Geprüfte ZIP als Release veröffentlichen
         shell: python
         run: |
-          import base64, hashlib, io, json, os, re, subprocess, zipfile
+          import base64, hashlib, io, json, os, re, subprocess, time, zipfile
           from pathlib import Path
 
           repo = 'oklepunkt/Grafik-Toolbelt-Releases'
@@ -80,9 +80,17 @@ jobs:
                  '--draft', '--prerelease', '--latest=false', '--title', 'KeyTween 0.1.0-dev.21',
                  '--notes-file', 'notes.md', name)
               release = find_release()
-          elif release['draft']:
+          elif release['draft'] and release['id'] != 412446573:
               raise RuntimeError('Unexpected existing draft; refusing to alter it')
-          if release is None or (release.get('body') or '').strip() != notes.strip():
+          for attempt in range(6):
+              if release is not None:
+                  break
+              time.sleep(2)
+              release = find_release()
+          if release is None:
+              raise RuntimeError('New draft is not yet visible in the release list; left as draft')
+          release = api('releases/' + str(release['id']))
+          if (release.get('body') or '').strip() != notes.strip():
               raise RuntimeError('Release notes differ from the reviewed source')
           assets = release['assets']
           if len(assets) != 1 or assets[0]['name'] != name or assets[0]['size'] != len(data) or assets[0].get('digest') != 'sha256:' + digest:
