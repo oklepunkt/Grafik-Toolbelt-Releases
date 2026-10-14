@@ -1,0 +1,108 @@
+name: KeyTween dev.28 veröffentlichen
+
+on:
+  push:
+    branches: [main]
+    paths: ['.github/releases/keytween-dev28.md', '.github/workflows/publish-keytween-dev28.yml']
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: keytween-dev28-release
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    env:
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - name: Geprüfte ZIP als Release veröffentlichen
+        shell: python
+        run: |
+          import base64, hashlib, io, json, os, re, subprocess, time, zipfile
+          from pathlib import Path
+
+          repo = 'oklepunkt/Grafik-Toolbelt-Releases'
+          if os.environ['GITHUB_REPOSITORY'] != repo:
+              raise RuntimeError('Unexpected repository')
+          tag = 'keytween-v0.1.0-dev.28'
+          name = 'KeyTween-0.1.0-dev.28.zip'
+          digest = '03e368b8257c2374511d77cbd0b63b625dd5d326aa258328a3279e6ebbe53567'
+          blob_sha = '537a74f75fc3604d3f418e363b715624d27ba6f2'
+
+          def gh(*args):
+              return subprocess.check_output(['gh', *args], text=True)
+
+          def api(path):
+              return json.loads(gh('api', 'repos/' + repo + '/' + path))
+
+          # Read exact committed bytes; never execute anything in the plugin ZIP.
+          blob = api('git/blobs/' + blob_sha)
+          data = base64.b64decode(blob['content'])
+          if len(data) != 523002 or hashlib.sha256(data).hexdigest() != digest:
+              raise RuntimeError('ZIP bytes differ from the reviewed package')
+          with zipfile.ZipFile(io.BytesIO(data)) as archive:
+              if archive.testzip() is not None:
+                  raise RuntimeError('ZIP CRC mismatch')
+              manifest = json.loads(archive.read('KeyTween/build.json'))
+              if manifest['build'] != '0.1.0-dev.28':
+                  raise RuntimeError('Wrong plugin version')
+          Path(name).write_bytes(data)
+          notes_entry = api('contents/.github/releases/keytween-dev28.md?ref=' + os.environ['GITHUB_SHA'])
+          notes = base64.b64decode(notes_entry['content']).decode('utf-8')
+          if not re.search(r'<!-- keytween-source revision=[0-9a-f]{40} -->', notes):
+              raise RuntimeError('Reviewed private source revision is missing')
+          Path('notes.md').write_text(notes)
+
+          # Drafts may not resolve through the tag endpoint. Look them up by ID
+          # through the paginated release list. Resume only exact notes/assets;
+          # never replace assets or change an already published release.
+          def find_release():
+              matches = []
+              for page in range(1, 11):
+                  batch = api('releases?per_page=100&page=' + str(page))
+                  matches.extend(r for r in batch if r['tag_name'] == tag)
+                  if len(batch) < 100:
+                      break
+              else:
+                  raise RuntimeError('Release list exceeds limit')
+              if len(matches) > 1:
+                  raise RuntimeError('Ambiguous release tag')
+              return matches[0] if matches else None
+
+          release = find_release()
+          if release is None:
+              gh('release', 'create', tag, '--repo', repo, '--target', os.environ['GITHUB_SHA'],
+                 '--draft', '--prerelease', '--latest=false', '--title', 'KeyTween 0.1.0-dev.28',
+                 '--notes-file', 'notes.md', name)
+              release = find_release()
+          for attempt in range(6):
+              if release is not None:
+                  break
+              time.sleep(2)
+              release = find_release()
+          if release is None:
+              raise RuntimeError('New draft is not yet visible in the release list; left as draft')
+          release = api('releases/' + str(release['id']))
+          if (release.get('body') or '').strip() != notes.strip():
+              raise RuntimeError('Release notes differ from the reviewed source')
+          assets = release['assets']
+          if len(assets) != 1 or assets[0]['name'] != name or assets[0]['size'] != len(data) or assets[0].get('digest') != 'sha256:' + digest:
+              raise RuntimeError('Uploaded asset mismatch; release left as draft')
+          downloaded = subprocess.check_output(['gh', 'api', 'repos/' + repo + '/releases/assets/' + str(assets[0]['id']), '-H', 'Accept: application/octet-stream'])
+          if hashlib.sha256(downloaded).hexdigest() != digest:
+              raise RuntimeError('Downloaded asset mismatch; release left as draft')
+          release_path = 'releases/' + str(release['id'])
+          if release['draft']:
+              gh('api', '--method', 'PATCH', 'repos/' + repo + '/' + release_path,
+                 '-F', 'draft=false', '-f', 'make_latest=false')
+          release = api(release_path)
+          if release['draft'] or not release['prerelease']:
+              raise RuntimeError('Unexpected published release status')
+          if api('releases/latest')['tag_name'] != 'toolbelt-v0.6':
+              raise RuntimeError('Unexpected latest Toolbelt release; inspect without replacing assets')
+          print(release['html_url'])
