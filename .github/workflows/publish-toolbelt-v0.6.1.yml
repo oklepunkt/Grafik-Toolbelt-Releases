@@ -1,0 +1,98 @@
+name: Grafik Toolbelt 0.6.1 veröffentlichen
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/releases/toolbelt-v0.6.1.md'
+      - '.github/workflows/publish-toolbelt-v0.6.1.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: toolbelt-v0.6.1-release
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    env:
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - name: Geprüftes DMG als Grafik Toolbelt Release veröffentlichen
+        shell: python
+        run: |
+          import base64, hashlib, json, os, re, subprocess, time
+          from pathlib import Path
+
+          repo = 'oklepunkt/Grafik-Toolbelt-Releases'
+          if os.environ['GITHUB_REPOSITORY'] != repo:
+              raise RuntimeError('Unexpected repository')
+          tag = 'toolbelt-v0.6.1'
+          name = 'Grafik-Toolbelt-0.6.1-macOS-universal.dmg'
+          size = 3502233
+          digest = '1b10aec637989cd7872f6dbec0e21d571e5bbf276debac2950f069f1a90fb777'
+          blob_sha = '9f0446ebcedcc644dddf961601edbe78d51a5e3c'
+
+          def gh(*args):
+              return subprocess.check_output(['gh', *args])
+
+          def api(path):
+              return json.loads(gh('api', 'repos/' + repo + '/' + path))
+
+          blob = api('git/blobs/' + blob_sha)
+          data = base64.b64decode(blob['content'])
+          if len(data) != size or hashlib.sha256(data).hexdigest() != digest:
+              raise RuntimeError('DMG blob differs from the verified macOS build')
+          notes_entry = api('contents/.github/releases/toolbelt-v0.6.1.md?ref=' + os.environ['GITHUB_SHA'])
+          notes = base64.b64decode(notes_entry['content']).decode('utf-8')
+          if not re.search(r'<!-- toolbelt-source revision=32d351ac5ea5a3360f5a33fdfa91ef78d10e2bc0 -->', notes):
+              raise RuntimeError('Reviewed private source revision is missing')
+          Path(name).write_bytes(data)
+          Path('notes.md').write_text(notes)
+
+          def find_release():
+              matches = []
+              for page in range(1, 11):
+                  batch = api('releases?per_page=100&page=' + str(page))
+                  matches.extend(r for r in batch if r['tag_name'] == tag)
+                  if len(batch) < 100:
+                      break
+              else:
+                  raise RuntimeError('Release list exceeds limit')
+              if len(matches) > 1:
+                  raise RuntimeError('Ambiguous app release tag')
+              return matches[0] if matches else None
+
+          if find_release() is not None:
+              raise RuntimeError('App release tags are immutable; refusing to replace an existing release')
+          gh('release', 'create', tag, '--repo', repo, '--target', os.environ['GITHUB_SHA'],
+             '--draft', '--latest=false', '--title', 'Grafik Toolbelt 0.6.1 · Vorschau',
+             '--notes-file', 'notes.md', name)
+          release = None
+          for attempt in range(6):
+              release = find_release()
+              if release is not None:
+                  break
+              time.sleep(2)
+          if release is None:
+              raise RuntimeError('Draft release is not visible yet')
+          release = api('releases/' + str(release['id']))
+          assets = release['assets']
+          if ((release.get('body') or '').strip() != notes.strip() or len(assets) != 1
+              or assets[0]['name'] != name or assets[0]['size'] != size
+              or assets[0].get('digest') != 'sha256:' + digest):
+              raise RuntimeError('Uploaded DMG or release notes differ; release remains a draft')
+          downloaded = gh('api', 'repos/' + repo + '/releases/assets/' + str(assets[0]['id']),
+                          '-H', 'Accept: application/octet-stream')
+          if hashlib.sha256(downloaded).hexdigest() != digest:
+              raise RuntimeError('Downloaded release DMG hash differs; release remains a draft')
+          gh('api', '--method', 'PATCH', 'repos/' + repo + '/releases/' + str(release['id']),
+             '-F', 'draft=false', '-f', 'make_latest=true')
+          published = api('releases/latest')
+          if published['tag_name'] != tag or published['draft']:
+              raise RuntimeError('Published app is not the latest release')
+          print(published['html_url'])
