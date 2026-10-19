@@ -74,6 +74,7 @@ jobs:
                   raise RuntimeError('Ambiguous release tag')
               return matches[0] if matches else None
 
+          stable_tag = api('releases/latest')['tag_name']
           release = find_release()
           if release is None:
               gh('release', 'create', tag, '--repo', repo, '--target', os.environ['GITHUB_SHA'],
@@ -103,7 +104,7 @@ jobs:
           release = api(release_path)
           if release['draft'] or not release['prerelease']:
               raise RuntimeError('Unexpected published release status')
-          if api('releases/latest')['tag_name'] != 'toolbelt-v0.6.1':
+          if api('releases/latest')['tag_name'] != stable_tag:
               raise RuntimeError('Unexpected latest Toolbelt release; inspect without replacing assets')
           print(release['html_url'])
 
