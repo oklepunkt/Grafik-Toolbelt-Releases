@@ -4,6 +4,8 @@
 <p align="center"><a href="https://github.com/oklepunkt/Grafik-Toolbelt-Releases/releases/latest"><strong>Neueste Version für macOS herunterladen</strong></a></p>
 
 ![Grafik Toolbelt](docs/toolbelt.png)
+Disclaimer: Dieses Tool ist mit Codex entwickelt worden.
+Es ist für interne Zwecke gedacht und nicht für die Öffentlichkeit bestimmt.
 
 Grafik Toolbelt installiert und aktualisiert unsere eigenen kreativen Tools. Plugins verwaltest du im kompakten Hauptfenster. Eigenständige Apps wie **MDA Creator** öffnen sich in einem eigenen Fenster.
 
