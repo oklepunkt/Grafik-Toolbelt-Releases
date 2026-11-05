@@ -1,0 +1,27 @@
+name: AE Tools Plugin veröffentlichen
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/ae-tools/publish.json'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: ae-tools-publication
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Geprüften Veröffentlichungsauftrag laden
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+      - name: Plugin prüfen und als eigenständigen Release veröffentlichen
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python3 .github/scripts/publish-ae-tool.py --request .github/ae-tools/publish.json
