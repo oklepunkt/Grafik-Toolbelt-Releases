@@ -2,20 +2,20 @@
   "schema": 1,
   "manifest": {
     "schema": 1,
-    "id": "grafik.cropcomp",
-    "name": "CropComp",
-    "version": "0.1.0",
+    "id": "grafik.stagger",
+    "name": "Stagger",
+    "version": "0.1.1",
     "host": "aftereffects",
     "format": "scriptui-jsx",
-    "entry": "CropComp.jsx",
+    "entry": "Stagger.jsx",
     "apiVersion": 1,
-    "sha256": "d44977cd780e10ac9f6167c23e743baa2b85a3115e6aa59b297fcc844febae6b",
-    "bytes": 45763
+    "sha256": "579f453b675102e4e9aa2094c98ee82c92c56a6f4e38e648de280bdd4472e16b",
+    "bytes": 49908
   },
-  "sourceCommit": "d94725b40801d2dfdaab1923a52e6b8184523667",
-  "payloadBlob": "1e22c50e037bd26bdb3f550e0a4e4dcd03076cd9",
-  "assetName": "CropComp-0.1.0.zip",
-  "assetSHA256": "751800087ebff989066a81d48a49842b265b8c329103a42519579d126b815dab",
-  "assetBytes": 13221,
-  "notes": ".github/ae-tools/releases/cropcomp-v0.1.0.md"
+  "sourceCommit": "9a84e024a7a29b69d17248725dfadb1956e29ff4",
+  "payloadBlob": "f2c0838629265e7a0ef5e34c31ff6e3bf3867ef5",
+  "assetName": "Stagger-0.1.1.zip",
+  "assetSHA256": "ea130327ce6c1c2c96ec6de4c1835d9bdadfbcc3b97c81468d88bbff87eae65c",
+  "assetBytes": 16148,
+  "notes": ".github/ae-tools/releases/stagger-v0.1.1.md"
 }
