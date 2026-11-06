@@ -1,0 +1,22 @@
+name: Alte Releases ohne Passwortschutz zurueckziehen
+on:
+  push:
+    branches: [main]
+    paths: ['.github/security/quarantine-plan.json', '.github/security/quarantine_releases.py', '.github/workflows/quarantine-unprotected-releases.yml']
+  workflow_dispatch:
+permissions:
+  contents: write
+  actions: write
+concurrency:
+  group: password-release-quarantine
+  cancel-in-progress: false
+jobs:
+  quarantine:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+      - name: Gepruefte alte Downloads als Entwuerfe sichern
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python3 .github/security/quarantine_releases.py .github/security/quarantine-plan.json --apply

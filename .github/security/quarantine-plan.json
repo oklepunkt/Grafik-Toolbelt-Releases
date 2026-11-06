@@ -1,0 +1,488 @@
+{
+  "schema": 1,
+  "repository": "oklepunkt/Grafik-Toolbelt-Releases",
+  "expected_latest": "toolbelt-v0.6.7",
+  "releases": [
+    {
+      "id": 417202158,
+      "tag": "toolbelt-v0.6.6",
+      "assets": [
+        {
+          "id": 656056576,
+          "name": "Grafik-Toolbelt-0.6.6-macOS-universal.dmg",
+          "size": 3576219,
+          "digest": "sha256:a3d343b19b9427d24c0c2d09878890114bf04509be258b6e59c4fa63328fd059"
+        }
+      ],
+      "publisher": ".github/workflows/publish-toolbelt-v0.6.6.yml"
+    },
+    {
+      "id": 417202139,
+      "tag": "keytween-v0.1.0-dev.40",
+      "assets": [
+        {
+          "id": 656056544,
+          "name": "KeyTween-0.1.0-dev.40.zip",
+          "size": 529666,
+          "digest": "sha256:2e1f381b8e1e2d853b144fe19d5a87a9d186026e9a20a042b62698b4172cec50"
+        }
+      ],
+      "publisher": ".github/workflows/publish-keytween-dev40.yml"
+    },
+    {
+      "id": 413548564,
+      "tag": "toolbelt-v0.6.1",
+      "assets": [
+        {
+          "id": 643133840,
+          "name": "Grafik-Toolbelt-0.6.1-macOS-universal.dmg",
+          "size": 3502233,
+          "digest": "sha256:1b10aec637989cd7872f6dbec0e21d571e5bbf276debac2950f069f1a90fb777"
+        }
+      ],
+      "publisher": ".github/workflows/publish-toolbelt-v0.6.1.yml"
+    },
+    {
+      "id": 413768793,
+      "tag": "toolbelt-v0.6.5",
+      "assets": [
+        {
+          "id": 643758432,
+          "name": "Grafik-Toolbelt-0.6.5-macOS-universal.dmg",
+          "size": 3573245,
+          "digest": "sha256:1d80847d9a4c6673cd60f94c3284012d950fabbc645595df6aa984288ead39bf"
+        }
+      ],
+      "publisher": ".github/workflows/publish-toolbelt-v0.6.5.yml"
+    },
+    {
+      "id": 413651071,
+      "tag": "toolbelt-v0.6.4",
+      "assets": [
+        {
+          "id": 643424683,
+          "name": "Grafik-Toolbelt-0.6.4-macOS-universal.dmg",
+          "size": 3544779,
+          "digest": "sha256:fc8b18c0727e854069cc414325d56b2a3feacffde18beb19c2483d4f9b1124e2"
+        }
+      ],
+      "publisher": ".github/workflows/publish-toolbelt-v0.6.4.yml"
+    },
+    {
+      "id": 413630019,
+      "tag": "toolbelt-v0.6.3",
+      "assets": [
+        {
+          "id": 643369995,
+          "name": "Grafik-Toolbelt-0.6.3-macOS-universal.dmg",
+          "size": 3542042,
+          "digest": "sha256:552b1dc4a41384b8cacaa4ea2161234ca948b5e413638fc6f3256ba051dd69f4"
+        }
+      ],
+      "publisher": ".github/workflows/publish-toolbelt-v0.6.3.yml"
+    },
+    {
+      "id": 413599977,
+      "tag": "toolbelt-v0.6.2",
+      "assets": [
+        {
+          "id": 643292722,
+          "name": "Grafik-Toolbelt-0.6.2-macOS-universal.dmg",
+          "size": 3506287,
+          "digest": "sha256:98e3280b4463c04a363c37f22001f27353eba18f76ad9e49f10775104132911b"
+        }
+      ],
+      "publisher": ".github/workflows/publish-toolbelt-v0.6.2.yml"
+    },
+    {
+      "id": 413768787,
+      "tag": "keytween-v0.1.0-dev.39",
+      "assets": [
+        {
+          "id": 643758418,
+          "name": "KeyTween-0.1.0-dev.39.zip",
+          "size": 529627,
+          "digest": "sha256:80639e6da5ac345df3bcf1e65d513fb24ee44f8b7fc129d14313071d75cd8aa8"
+        }
+      ],
+      "publisher": ".github/workflows/publish-keytween-dev39.yml"
+    },
+    {
+      "id": 412842381,
+      "tag": "keytween-v0.1.0-dev.38",
+      "assets": [
+        {
+          "id": 640703798,
+          "name": "KeyTween-0.1.0-dev.38.zip",
+          "size": 525442,
+          "digest": "sha256:1ff887ff297efe5e75f94eeacb03bec8f055333e6e8e7fe6fec13e6207703c3d"
+        }
+      ],
+      "publisher": ".github/workflows/publish-keytween-dev38.yml"
+    },
+    {
+      "id": 412826562,
+      "tag": "keytween-v0.1.0-dev.37",
+      "assets": [
+        {
+          "id": 640660476,
+          "name": "KeyTween-0.1.0-dev.37.zip",
+          "size": 525159,
+          "digest": "sha256:f2ac3e1eed99b3e8b4441f8294c5961ccc42990afcea397c90e5b14d171c5a4f"
+        }
+      ],
+      "publisher": ".github/workflows/publish-keytween-dev37.yml"
+    },
+    {
+      "id": 412812813,
+      "tag": "keytween-v0.1.0-dev.36",
+      "assets": [
+        {
+          "id": 640622885,
+          "name": "KeyTween-0.1.0-dev.36.zip",
+          "size": 524540,
+          "digest": "sha256:97ddcb2874056151ea7cf6011d75d8a8f6b39dc296f30677f86672809c7895cc"
+        }
+      ],
+      "publisher": ".github/workflows/publish-keytween-dev36.yml"
+    },
+    {
+      "id": 412792288,
+      "tag": "keytween-v0.1.0-dev.35",
+      "assets": [
+        {
+          "id": 640571315,
+          "name": "KeyTween-0.1.0-dev.35.zip",
+          "size": 524060,
+          "digest": "sha256:caa7c24a4bd8f9fc91a404421a7dc6acfb7e7720fb59f36eb03d62ad131811c7"
+        }
+      ],
+      "publisher": ".github/workflows/publish-keytween-dev35.yml"
+    },
+    {
+      "id": 412708473,
+      "tag": "keytween-v0.1.0-dev.34",
+      "assets": [
+        {
+          "id": 640362346,
+          "name": "KeyTween-0.1.0-dev.34.zip",
+          "size": 523278,
+          "digest": "sha256:13e8e5ee309f53f9f179f55bff67f49dcc91df7c5cad9952dbc40e87efcf2ec0"
+        }
+      ],
+      "publisher": ".github/workflows/publish-keytween-dev34.yml"
+    },
+    {
+      "id": 412685603,
+      "tag": "keytween-v0.1.0-dev.33",
+      "assets": [
+        {
+          "id": 640302693,
+          "name": "KeyTween-0.1.0-dev.33.zip",
+          "size": 525752,
+          "digest": "sha256:ba874500fb425b6588f08f80440ac1dfde1f246cd8f606f89e06cc8f2ed7c56e"
+        }
+      ],
+      "publisher": ".github/workflows/publish-keytween-dev33.yml"
+    },
+    {
+      "id": 412666016,
+      "tag": "keytween-v0.1.0-dev.32",
+      "assets": [
+        {
+          "id": 640245879,
+          "name": "KeyTween-0.1.0-dev.32.zip",
+          "size": 523562,
+          "digest": "sha256:9a40b65c4ea2826b4db8b3439cd4579f5dcd1a94ed03ae2bf3b6847b71e35a1f"
+        }
+      ],
+      "publisher": ".github/workflows/publish-keytween-dev32.yml"
+    },
+    {
+      "id": 412646968,
+      "tag": "keytween-v0.1.0-dev.31",
+      "assets": [
+        {
+          "id": 640194712,
+          "name": "KeyTween-0.1.0-dev.31.zip",
+          "size": 521385,
+          "digest": "sha256:a5a44dee2fe3570257852cdb7142dc9150bf6f32a07c77a9911de59a3317083e"
+        }
+      ],
+      "publisher": ".github/workflows/publish-keytween-dev31.yml"
+    },
+    {
+      "id": 412642880,
+      "tag": "keytween-v0.1.0-dev.30",
+      "assets": [
+        {
+          "id": 640181810,
+          "name": "KeyTween-0.1.0-dev.30.zip",
+          "size": 520903,
+          "digest": "sha256:258ac8f7b6a118585823048d6e12ef9e86216a56cec5392286e780b5ddb8961e"
+        }
+      ],
+      "publisher": ".github/workflows/publish-keytween-dev30.yml"
+    },
+    {
+      "id": 412619966,
+      "tag": "keytween-v0.1.0-dev.29",
+      "assets": [
+        {
+          "id": 640115796,
+          "name": "KeyTween-0.1.0-dev.29.zip",
+          "size": 519800,
+          "digest": "sha256:e6bc47084d7ca03c69c308278d232fe55bad0ecce170743cdcee6f9ddfb84e10"
+        }
+      ],
+      "publisher": ".github/workflows/publish-keytween-dev29.yml"
+    },
+    {
+      "id": 412611698,
+      "tag": "keytween-v0.1.0-dev.28",
+      "assets": [
+        {
+          "id": 640090467,
+          "name": "KeyTween-0.1.0-dev.28.zip",
+          "size": 523002,
+          "digest": "sha256:03e368b8257c2374511d77cbd0b63b625dd5d326aa258328a3279e6ebbe53567"
+        }
+      ],
+      "publisher": ".github/workflows/publish-keytween-dev28.yml"
+    },
+    {
+      "id": 412573750,
+      "tag": "keytween-v0.1.0-dev.27",
+      "assets": [
+        {
+          "id": 639979524,
+          "name": "KeyTween-0.1.0-dev.27.zip",
+          "size": 522104,
+          "digest": "sha256:04150b82e6ff7d309cd90b5384fa09c8c3e3877dbc7bda3c350fa701ef943662"
+        }
+      ],
+      "publisher": ".github/workflows/publish-keytween-dev27.yml"
+    },
+    {
+      "id": 412544957,
+      "tag": "keytween-v0.1.0-dev.26",
+      "assets": [
+        {
+          "id": 639895547,
+          "name": "KeyTween-0.1.0-dev.26.zip",
+          "size": 513953,
+          "digest": "sha256:df2622d066245d8b67a30f19caeee86718f639ec6cdda89e7036f932d2c2d3fe"
+        }
+      ],
+      "publisher": ".github/workflows/publish-keytween-dev26.yml"
+    },
+    {
+      "id": 412525991,
+      "tag": "keytween-v0.1.0-dev.25",
+      "assets": [
+        {
+          "id": 639843428,
+          "name": "KeyTween-0.1.0-dev.25.zip",
+          "size": 509812,
+          "digest": "sha256:623c299aae9a24fa20b5b7ea022f25f3efdbf458f0df763291012da612480f50"
+        }
+      ],
+      "publisher": ".github/workflows/publish-keytween-dev25.yml"
+    },
+    {
+      "id": 412499333,
+      "tag": "keytween-v0.1.0-dev.24",
+      "assets": [
+        {
+          "id": 639767166,
+          "name": "KeyTween-0.1.0-dev.24.zip",
+          "size": 506277,
+          "digest": "sha256:9de38f256c62d43dea635a3b9df4cb45cba2232b902d9330552d2162024fafe9"
+        }
+      ],
+      "publisher": ".github/workflows/publish-keytween-dev24.yml"
+    },
+    {
+      "id": 412472832,
+      "tag": "keytween-v0.1.0-dev.23",
+      "assets": [
+        {
+          "id": 639689973,
+          "name": "KeyTween-0.1.0-dev.23.zip",
+          "size": 505157,
+          "digest": "sha256:fac56aece9abe6306a0ef3f8c3412822992941977309b3e08df15c37fe1b1b71"
+        }
+      ],
+      "publisher": ".github/workflows/publish-keytween-dev23.yml"
+    },
+    {
+      "id": 412459705,
+      "tag": "keytween-v0.1.0-dev.22",
+      "assets": [
+        {
+          "id": 639648306,
+          "name": "KeyTween-0.1.0-dev.22.zip",
+          "size": 502426,
+          "digest": "sha256:9dd5843dd7b80f8ac8ce0edbd146acb6a67f859ede9e2fae7fa97ce3abd3e5aa"
+        }
+      ],
+      "publisher": ".github/workflows/publish-keytween-dev22.yml"
+    },
+    {
+      "id": 412446573,
+      "tag": "keytween-v0.1.0-dev.21",
+      "assets": [
+        {
+          "id": 639607027,
+          "name": "KeyTween-0.1.0-dev.21.zip",
+          "size": 502985,
+          "digest": "sha256:05c16ec54a4d42ce5591ef8ae81e237f716bd98f6ad4e56edad4a06a501fe316"
+        }
+      ],
+      "publisher": ".github/workflows/publish-keytween-dev21.yml"
+    },
+    {
+      "id": 411595962,
+      "tag": "keytween-v0.1.0-dev.20",
+      "assets": [
+        {
+          "id": 636807951,
+          "name": "KeyTween-0.1.0-dev.20.zip",
+          "size": 502096,
+          "digest": "sha256:1782cfa0d27a6b6a93df73edaf6e4bf7b459ea936caedd2e83dbfc1f6deaedb0"
+        }
+      ],
+      "publisher": ".github/workflows/publish-keytween-dev20.yml"
+    },
+    {
+      "id": 405121157,
+      "tag": "toolbelt-v0.6",
+      "assets": [
+        {
+          "id": 616595755,
+          "name": "Grafik-Toolbelt-0.6-macOS-universal.dmg",
+          "size": 3399134,
+          "digest": "sha256:04d3e4eb409a500682a02176b6b583d982c2cf46ca67963eb8e6f1df09f9ba70"
+        }
+      ],
+      "publisher": null
+    },
+    {
+      "id": 405077648,
+      "tag": "toolbelt-v0.5",
+      "assets": [
+        {
+          "id": 616468607,
+          "name": "Grafik-Toolbelt-0.5-macOS-universal.dmg",
+          "size": 3362967,
+          "digest": "sha256:abe91c6762f519ef92a6a58ea0a76647ba7c33f71876b1131f9da116a0523e30"
+        }
+      ],
+      "publisher": null
+    },
+    {
+      "id": 405040929,
+      "tag": "toolbelt-v0.4.2",
+      "assets": [
+        {
+          "id": 616363031,
+          "name": "Grafik-Toolbelt-0.4.2-macOS-universal.dmg",
+          "size": 3359763,
+          "digest": "sha256:8948581c271ccbf4eb87bfafbbe59545fe5daa432d19b52d57ed3a4a40844614"
+        }
+      ],
+      "publisher": null
+    },
+    {
+      "id": 405029913,
+      "tag": "toolbelt-v0.4.1",
+      "assets": [
+        {
+          "id": 616330265,
+          "name": "Grafik-Toolbelt-0.4.1-macOS-universal.dmg",
+          "size": 3359796,
+          "digest": "sha256:56007c08e137a66e919b6d6efc5bc712958cfff950cf99c47d0a14083670e98b"
+        }
+      ],
+      "publisher": null
+    },
+    {
+      "id": 404980307,
+      "tag": "toolbelt-v0.3",
+      "assets": [
+        {
+          "id": 616180169,
+          "name": "Grafik-Toolbelt-0.3-macOS-universal.dmg",
+          "size": 2893962,
+          "digest": "sha256:da6fa6a4b0140548fa345964c8171b697c1b731e3df3a4d5419d69ef861513f2"
+        }
+      ],
+      "publisher": null
+    },
+    {
+      "id": 404927119,
+      "tag": "toolbelt-v0.2.1",
+      "assets": [
+        {
+          "id": 616021814,
+          "name": "Grafik-Toolbelt-0.2.1-macOS-universal.dmg",
+          "size": 2874629,
+          "digest": "sha256:e41f579ea25e4541c6c18cc5b1ab4a240d27d7ef1d361fd0c8e13f24a861f9c5"
+        }
+      ],
+      "publisher": null
+    },
+    {
+      "id": 404947538,
+      "tag": "toolbelt-v0.2",
+      "assets": [
+        {
+          "id": 616080606,
+          "name": "Grafik-Toolbelt-0.2-macOS-universal.dmg",
+          "size": 2881680,
+          "digest": "sha256:9a14743927d6c5e0d6afe841fdf52419cea1b060136c70314d897bf225396788"
+        }
+      ],
+      "publisher": null
+    },
+    {
+      "id": 405150191,
+      "tag": "keytween-v0.1.0-dev.18",
+      "assets": [
+        {
+          "id": 616686110,
+          "name": "KeyTween-0.1.0-dev.18.zip",
+          "size": 501531,
+          "digest": "sha256:df5b1239d4a05f37288ed95a71f25756438d35d780e1ee7c1797f7b0dc56aaf8"
+        }
+      ],
+      "publisher": null
+    },
+    {
+      "id": 405132445,
+      "tag": "keytween-v0.1.0-dev.17",
+      "assets": [
+        {
+          "id": 616631522,
+          "name": "KeyTween-0.1.0-dev.17.zip",
+          "size": 498296,
+          "digest": "sha256:c43dc8b9dbce2d40001f8463937eb9b4750e8fd6ccd9487c4439bcad009ee04f"
+        }
+      ],
+      "publisher": null
+    },
+    {
+      "id": 405103142,
+      "tag": "keytween-v0.1.0-dev.16",
+      "assets": [
+        {
+          "id": 616541651,
+          "name": "KeyTween-0.1.0-dev.16-macOS.zip",
+          "size": 1333185,
+          "digest": "sha256:f76ae54f6907185cada7d13d815db921512277ca735aa2f5c4ef4398b846dda0"
+        }
+      ],
+      "publisher": null
+    }
+  ]
+}
