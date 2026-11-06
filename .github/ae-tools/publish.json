@@ -2,20 +2,20 @@
   "schema": 1,
   "manifest": {
     "schema": 1,
-    "id": "grafik.wingman",
-    "name": "Wingman",
-    "version": "0.1.4",
+    "id": "grafik.cropcomp",
+    "name": "CropComp",
+    "version": "0.1.1",
     "host": "aftereffects",
     "format": "scriptui-jsx",
-    "entry": "Wingman.jsx",
+    "entry": "CropComp.jsx",
     "apiVersion": 1,
-    "sha256": "21cc23106ab716124b39891b52508d861b3d86985813010a0b681ede79aa5429",
-    "bytes": 80950
+    "sha256": "333192e290cdc300aca2627d8938473390f73ac8ca01b39133deb5749abfc8d4",
+    "bytes": 47125
   },
-  "sourceCommit": "2a5371f7c19849d46503234e163056f4531a7cc3",
-  "payloadBlob": "1c16a4796117dbfb81d6b8776f4de25ec3350305",
-  "assetName": "Wingman-0.1.4.zip",
-  "assetSHA256": "5fa7de679d51c579e1ad035f6ee16495d7fd4cf288630b351bb451488647bc77",
-  "assetBytes": 29799,
-  "notes": ".github/ae-tools/releases/wingman-v0.1.4.md"
+  "sourceCommit": "8689cc110f822b0633fb31170ee7a3b91b466c77",
+  "payloadBlob": "86e24961a5efac10746cd60f8896be798c69fe7a",
+  "assetName": "CropComp-0.1.1.zip",
+  "assetSHA256": "7de7c7ad6c1c5030a9577387269bf8d854bcba62c42afd02d591bd9a6c99a427",
+  "assetBytes": 13811,
+  "notes": ".github/ae-tools/releases/cropcomp-v0.1.1.md"
 }
