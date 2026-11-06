@@ -2,20 +2,20 @@
   "schema": 1,
   "manifest": {
     "schema": 1,
-    "id": "grafik.stagger",
-    "name": "Stagger",
-    "version": "0.1.2",
+    "id": "grafik.wingman",
+    "name": "Wingman",
+    "version": "0.1.4",
     "host": "aftereffects",
     "format": "scriptui-jsx",
-    "entry": "Stagger.jsx",
+    "entry": "Wingman.jsx",
     "apiVersion": 1,
-    "sha256": "cea77b03a606585fa93d8dca1bc56c67e3c4209fc816c254a1581bd5ab05edf2",
-    "bytes": 280051
+    "sha256": "21cc23106ab716124b39891b52508d861b3d86985813010a0b681ede79aa5429",
+    "bytes": 80950
   },
-  "sourceCommit": "75aaace65c9205d53e99e155ff6e0cf2fd48fc82",
-  "payloadBlob": "817ff456ded9fd0d4b3bc788da4af204f6eff28e",
-  "assetName": "Stagger-0.1.2.zip",
-  "assetSHA256": "2ed39c766a7f873cf5bb49e808f682795baa3ca97564b170ef3932702a11c5ae",
-  "assetBytes": 111239,
-  "notes": ".github/ae-tools/releases/stagger-v0.1.2.md"
+  "sourceCommit": "2a5371f7c19849d46503234e163056f4531a7cc3",
+  "payloadBlob": "1c16a4796117dbfb81d6b8776f4de25ec3350305",
+  "assetName": "Wingman-0.1.4.zip",
+  "assetSHA256": "5fa7de679d51c579e1ad035f6ee16495d7fd4cf288630b351bb451488647bc77",
+  "assetBytes": 29799,
+  "notes": ".github/ae-tools/releases/wingman-v0.1.4.md"
 }
